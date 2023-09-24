@@ -38,10 +38,10 @@ while ret :
     frame_ = results[0].plot()
     
     cv2.imshow('frame', frame_)
-    cap1 = cv2.VideoCapture(0)
+    cap1 = cv2.VideoCapture(0 )
     
     if cv2.waitKey(25) & 0xFF==ord('e'):
-        personid = (input('enter numeber id you want to track'))
+        personid = (input('Assign Box ID you want to track '))
         for i in id:
             if i == int(personid):               
                 print('ID found')
@@ -62,11 +62,14 @@ while ret :
                                 cv2.rectangle(frame1, (x1, y1), (x2, y2), (0, 255, 0), 2)
                                 cv2.putText(frame1, personid, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
                                 cv2.imshow('frame2', frame1)
-                            if cv2.waitKey(25) & 0xFF == ord('w'):
+                            
+                    new_frames = results1[0].plot()
+                    cv2.imshow('newframe', new_frames)
+                    if cv2.waitKey(25) & 0xFF == ord('w'):
                                 break
 
             else:
-                print("no vaalid id found")        
+                print("no valid id found")        
                 continue
 
     if cv2.waitKey(25) & 0xFF == ord('q'):
